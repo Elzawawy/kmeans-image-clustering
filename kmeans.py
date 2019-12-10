@@ -111,7 +111,7 @@ class KMeans(object):
             if(distoration_measure < best_restart_score):
                 print("This Restart scored better than last one. Updating Attributes...")
                 self.cluster_labels_ = cluster_labels
-                self.centroids_ = new_centroids
+                self.centroids_ = new_centroids.reshape([self.num_clusters_].extend(features_shape))
                 self.distoration_measure_ = distoration_measure
                 self.iter_num_ = iter_num
             else: 
