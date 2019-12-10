@@ -1,5 +1,5 @@
-#imports cell 
 import numpy as np
+import matplotlib.pyplot as plt
 from copy import deepcopy
 from tqdm import tqdm
 import warnings
@@ -40,16 +40,17 @@ class KMeans(object):
                 Relative tolerance with regards to inertia to declare convergence.
         """
         super().__init__()
+
         self.num_clusters_ = num_clusters
         self.centroids_ = init_seed
-        self._is_centroids_random = init_seed is None
         self.num_restarts_ = num_restarts
         self.max_iter_ = max_iter
         self.tolerance_ = tolerance
         self.iter_num_ = 0
         self.distoration_measure_ = 0
         self.cluster_labels_ = np.array([])
-
+        self._is_centroids_random = init_seed is None
+        self._measure_history = []
 
     def fit(self, data): 
         """
@@ -86,6 +87,7 @@ class KMeans(object):
             # Iteration Params
             progress_bar = tqdm(total=self.max_iter_)
             iter_num = 0
+            measure_history = []
 
             # When, after an update, the estimate of that center stays the same, exit loop
             while error > self.tolerance_ and iter_num < self.max_iter_:
@@ -101,6 +103,7 @@ class KMeans(object):
                     new_centroids[i] = np.mean(data[cluster_labels == i], axis=0)
                 error = np.linalg.norm(new_centroids - old_centroids)
                 distoration_measure = np.sum(distances)
+                measure_history.append(distoration_measure)
                 print("Restart",restart_num+1," Iteration", iter_num+1)
                 print("The Error of this iteration is ", error)
                 print("The Distoration Measure score of this assignment is ", distoration_measure)
@@ -109,10 +112,13 @@ class KMeans(object):
 
             progress_bar.close()
             if(distoration_measure < best_restart_score):
-                print("This Restart scored better than last one. Updating Attributes...")
+                print("This Restart scored better than last _plorone. Updating Attributes...")
                 self.cluster_labels_ = cluster_labels
-                self.centroids_ = new_centroids.reshape([self.num_clusters_].extend(features_shape))
+                new_centroids_shape = [self.num_clusters_]
+                new_centroids_shape.extend(features_shape)
+                self.centroids_ = new_centroids.reshape(new_centroids_shape)
                 self.distoration_measure_ = distoration_measure
+                self._measure_history = measure_history
                 self.iter_num_ = iter_num
             else: 
                 print("This Restart have lower score than best one. Ignoring...")
@@ -124,3 +130,8 @@ class KMeans(object):
         mean = np.mean(data, axis = 0)
         std = np.std(data, axis = 0)
         return np.random.randn(self.num_clusters_,num_features)*std + mean
+
+    def plot_measure_vs_iteration(self):
+        plt.figure(figsize=(15, 10))
+        plt.plot(range(self.iter_num_), self._measure_history)
+
