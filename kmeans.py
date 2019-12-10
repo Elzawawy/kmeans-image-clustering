@@ -67,7 +67,7 @@ class KMeans(object):
             data = data.reshape(num_instances, num_features)
 
         best_restart_score = np.inf
-        for restart_num in tqdm(range(self.num_restarts_)+1):
+        for restart_num in tqdm(range(self.num_restarts_+1)):
             # If initial seed is None, then we have to generate the centroids randomly from data.
             if(self._is_centroids_random):
                 self.centroids_ = self._random_initialize_centroids(data, num_features)
