@@ -3,7 +3,7 @@
 
 ![](https://sds-platform-private.s3-us-east-2.amazonaws.com/uploads/64_blog_image_2.png)
 
-This is an individual assignment for *AI Course Fall 2019/2020 offering*. In this assignment I implemented K-Means clustering algorithm from scratch and applied it on an image dataset with different experiment runs.
+This work was developed in assignment 3 for *AI Course Fall 2019/2020 offering at AlexU Faculty of Engineering*. In this assignment I implemented K-Means clustering algorithm from scratch and applied it on an image dataset with different experiment runs.
 
 The **purpose** of K-means is to identify groups, or clusters of data points in a multidimensional space. The number K in K-means is the **number of clusters** to create. Initial cluster means are usually chosen **at random.**
 K-means is usually implemented as an **iterative procedure** in which each iteration involves two successive steps. 
