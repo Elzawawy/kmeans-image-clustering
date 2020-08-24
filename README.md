@@ -1,9 +1,9 @@
 # ImageClustering
-<p align='center'>Made with :heart: by <b>Amr Elzawawy</b></p>
 
 ![](https://sds-platform-private.s3-us-east-2.amazonaws.com/uploads/64_blog_image_2.png)
 
-This work was developed in assignment 3 for *AI Course Fall 2019/2020 offering at AlexU Faculty of Engineering*. In this assignment I implemented K-Means clustering algorithm from scratch and applied it on an image dataset with different experiment runs.
+This individual work was developed for assignment 3 for *AI Course Fall 2019/2020 offering at CCE Department, Faculty of Engineering, Alexandria University*. 
+In this assignment I implemented K-Means clustering algorithm from scratch and applied it on an image dataset with different experiment runs.
 
 The **purpose** of K-means is to identify groups, or clusters of data points in a multidimensional space. The number K in K-means is the **number of clusters** to create. Initial cluster means are usually chosen **at random.**
 K-means is usually implemented as an **iterative procedure** in which each iteration involves two successive steps. 
@@ -28,7 +28,6 @@ It loads the dataset using the directory path, and returns a tuple of four resul
 Although clustering does not make use of the labels since this is an unsupervised learning algorithm.
 This is intended to support a general case ImageDataLoader not specifically built for the image clustering problem. 
 
-### Final notes
-- I open-source my KMeans Implementation, and CIFAR-10 Data Loader class Implementation.
-- Intend to add my Spectral Clustering Implementation later on.
-- Intend to make my Data Loader class usable for more than one dataset.
+---
+
+<h3 align='center'>Made with :heart:</h3>
